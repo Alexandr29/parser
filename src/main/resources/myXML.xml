@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <application>
-    <class name="MainClass">
-        <method name="main"/>
-    </class>
-    <class name="Window">
-        <method name="open"/>
+    <parfam name="123">1</parfam>
+    <class></class>
+    <class name="Window2">
+        <method name="open">
+            <param name="123">1</param>
+            <param name="123">1</param>
+            <param name="123">1</param>
+        </method>
         <method name="close"/>
         <method name="show"/>
         <method name="hide"/>

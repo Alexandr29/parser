@@ -23,4 +23,32 @@ public class Handler extends DefaultHandler {
             throws SAXException {
         System.out.println("end of element");
     }
+
+    @Override public void characters(char[] ch, int start, int length)
+            throws SAXException {
+        System.out.print("Characters:    \"");
+        for (int i = start; i < start + length; i++) {
+            switch (ch[i]) {
+            case '\\':
+                System.out.print("\\\\");
+                break;
+            case '"':
+                System.out.print("\\\"");
+                break;
+            case '\n':
+                System.out.print("\\n");
+                break;
+            case '\r':
+                System.out.print("\\r");
+                break;
+            case '\t':
+                System.out.print("\\t");
+                break;
+            default:
+                System.out.print(ch[i]);
+                break;
+            }
+        }
+        System.out.print("\"\n");
+    }
 }
