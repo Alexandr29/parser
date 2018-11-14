@@ -6,61 +6,41 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WorkWithParsers {
+    int even = 1;
     public static void main(String[] args) {
-        SAXParserFactory SAXfactory = SAXParserFactory.newInstance();
-        DocumentBuilderFactory DOMfactory = DocumentBuilderFactory
+        final List<String> l = new ArrayList<String>();
+        try { DocumentBuilderFactory DOMfactory = DocumentBuilderFactory
                 .newInstance();
-        Handler handler = new Handler();
-        try {
-            SAXParser saxParser = SAXfactory.newSAXParser();
-            saxParser.parse(new File("src/main/resources/myXML.xml"), handler);
-
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
             DocumentBuilder builder = DOMfactory.newDocumentBuilder();
             Document document = builder
                     .parse(new File("src/main/resources/myXML.xml"));
-            document.getDocumentElement().normalize();
-            Element root = document.getDocumentElement();
-            System.out.println(root.getNodeName());
-            NodeList nList = document.getElementsByTagName(root.getNodeName());
-            visitChildNodes(nList);
+            Node rootNode = document.getFirstChild();
 
+            WorkWithParsers workWithParsers = new WorkWithParsers();
+            workWithParsers.parsing(rootNode);
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-
     }
+    public void parsing(Node node){
 
-    private static void visitChildNodes(NodeList nList) {
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node node = nList.item(temp);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                System.out.println(
-                        "Node Name = " + node.getNodeName() + "; Value = "
-                                + node.getTextContent());
-                //Check all attributes
-                if (node.hasAttributes()) {
-                    node.getAttributes().removeNamedItem("name");
-                    // get attributes names and values
-                    NamedNodeMap nodeMap = node.getAttributes();
-                    for (int i = 0; i < nodeMap.getLength(); i++) {
-                        Node tempNode = nodeMap.item(i);
-                        System.out.println(
-                                "Attr name : " + tempNode.getNodeName()
-                                        + "; Value = " + tempNode
-                                        .getNodeValue());
-                    }
+        System.out.println("even = " + even);
+        if (even % 2 == 0){
+           node.setTextContent("hi");
+        }
+        System.out.println("Имя узла " + node.getNodeName());
+        if (node.hasChildNodes()){
+            even++;
+            NodeList child = node.getChildNodes();
+            for (int i = 0; i < child.getLength(); i++) {
+                if (child.item(i).getNodeType()==Node.ELEMENT_NODE){
+                    parsing(child.item(i));
                 }
-                if (node.hasChildNodes()) {
-                    //We got more childs; Let's visit them as well
-                    visitChildNodes(node.getChildNodes());
-                }
+
             }
         }
     }

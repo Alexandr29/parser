@@ -1,17 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <application>
-    <class name = "MainClass">
-        <method name = "main"/>
+    <class name="MainClass">
+        <method name="main"/>
     </class>
-    <class name = "Window">
-        <method name = "open"/>
-        <method name = "close"/>
-        <method name = "show"/>
-        <method name = "hide"/>
+    <class name="Window">
+        <method name="open"/>
+        <method name="close"/>
+        <method name="show"/>
+        <method name="hide"/>
     </class>
-    <class name = "DataBase">
-        <method name = "connect"/>
-        <method name = "disconnect"/>
-        <method name = "getData"/>
+    <class name="DataBase1">
+        <method name="connect"/>
+        <method name="disconnect"/>
+        <method name="getData"/>
+    </class>
+    <class name="DataBase2">
+        <method name="connect"/>
+        <method name="disconnect"/>
+        <method name="getData"/>
+    </class>
+    <class name="DataBase3">
+        <method name="connect"/>
+        <method name="disconnect"/>
+        <method name="getData"/>
     </class>
 </application>
