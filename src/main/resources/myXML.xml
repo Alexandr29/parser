@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <application>
-    <parfam name="123">1</parfam>
     <class></class>
     <class name="Window2">
         <method name="open">

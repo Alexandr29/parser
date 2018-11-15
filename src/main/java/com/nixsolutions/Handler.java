@@ -6,6 +6,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class Handler extends DefaultHandler {
 
+    private String tagName = "";
+
     @Override public void startDocument() throws SAXException {
         System.out.println("start parsing...");
     }
@@ -16,39 +18,26 @@ public class Handler extends DefaultHandler {
 
     @Override public void startElement(String uri, String localName,
             String qName, Attributes attributes) throws SAXException {
-        System.out.println("i am here");
+        tagName = qName;
+        super.startElement(uri, localName, qName, attributes);
     }
 
     @Override public void endElement(String uri, String localName, String qName)
             throws SAXException {
-        System.out.println("end of element");
+        tagName = "";
+        super.endElement(uri, localName, qName);
     }
 
     @Override public void characters(char[] ch, int start, int length)
             throws SAXException {
-        System.out.print("Characters:    \"");
-        for (int i = start; i < start + length; i++) {
-            switch (ch[i]) {
-            case '\\':
-                System.out.print("\\\\");
-                break;
-            case '"':
-                System.out.print("\\\"");
-                break;
-            case '\n':
-                System.out.print("\\n");
-                break;
-            case '\r':
-                System.out.print("\\r");
-                break;
-            case '\t':
-                System.out.print("\\t");
-                break;
-            default:
-                System.out.print(ch[i]);
-                break;
-            }
+
+        if (tagName.equals("name")) {
+            ch = "Window2".toCharArray();
+            start = 0;
+            length = ch.length;
+
         }
-        System.out.print("\"\n");
+        System.out.println(ch);
+        super.characters(ch, start, length);
     }
 }

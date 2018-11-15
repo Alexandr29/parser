@@ -1,25 +1,43 @@
 package com.nixsolutions;
 
-import com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
-import java.io.IOException;
+import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
 
-public class RemoveFromXmlSax extends DefaultHandler {
+public class RemoveFromXmlSax {
+
+    private void saveToXML(Source source) {
+        File file = new File("src/main/resources/myXML3.xml");
+        try {
+            TransformerFactory transformerFactory = TransformerFactory
+                    .newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult(file);
+            transformer.transform(source, result);
+
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private void updateXML(File file) {
+
         Handler handler = new Handler();
-        SAXParserFactory saxFactory = SAXParserFactory.newInstance();
+        SAXParserFactory parserFactor = SAXParserFactory.newInstance();
         try {
-            SAXParser saxParser = saxFactory.newSAXParser();
-            saxParser.parse(file, handler);
+            SAXParser parser = parserFactor.newSAXParser();
+            parser.parse(file, handler);
+            Source src = new SAXSource(
+                    new InputSource("src/main/resources/myXML.xml"));
+            saveToXML(src);
+
         } catch (ParserConfigurationException | SAXException | IOException e) {
             throw new RuntimeException(e);
         }
