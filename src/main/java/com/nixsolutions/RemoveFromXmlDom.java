@@ -80,7 +80,7 @@ public class RemoveFromXmlDom {
     }
 
     public static void main(String[] args) {
-        File file = new File("src/main/resources/myXML.xml");
+        File file = new File("src/main/resources/source.xml");
         new RemoveFromXmlDom().updateXML(file);
     }
 }

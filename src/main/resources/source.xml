@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
-    <class></class>
-    <class name="Window2">
+    <class1 name="Window2">
         <method name="open">
             <param name="123">1</param>
             <param name="123">1</param>
@@ -10,20 +9,20 @@
         <method name="close"/>
         <method name="show"/>
         <method name="hide"/>
-    </class>
-    <class name="DataBase1">
+    </class1>
+    <class2 name="DataBase1">
         <method name="connect"/>
         <method name="disconnect"/>
         <method name="getData"/>
-    </class>
-    <class name="DataBase2">
+    </class2>
+    <class3 name="DataBase2">
         <method name="connect"/>
         <method name="disconnect"/>
         <method name="getData"/>
-    </class>
-    <class name="DataBase3">
+    </class3>
+    <class4 name="DataBase3">
         <method name="connect"/>
         <method name="disconnect"/>
         <method name="getData"/>
-    </class>
+    </class4>
 </application>
