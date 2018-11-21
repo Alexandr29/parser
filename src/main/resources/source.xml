@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application>
-    <class1 name="Window2">
-        <method name="open">
-            <param name="123">1</param>
-            <param name="123">1</param>
-            <param name="123">1</param>
-        </method>
-        <method name="close"/>
-        <method name="show"/>
-        <method name="hide"/>
-    </class1>
-    <class2 name="DataBase1">
-        <method name="connect"/>
-        <method name="disconnect"/>
-        <method name="getData"/>
-    </class2>
-    <class3 name="DataBase2">
-        <method name="connect"/>
-        <method name="disconnect"/>
-        <method name="getData"/>
-    </class3>
-    <class4 name="DataBase3">
-        <method name="connect"/>
-        <method name="disconnect"/>
-        <method name="getData"/>
-    </class4>
-</application>
+
+<shiporder>
+    <orderperson>John Smith</orderperson>
+    <shipto>
+        <name>Ola Nordmann</name>
+        <address>Langgt 23</address>
+        <city>4000 Stavanger</city>
+        <country>Norway</country>
+    </shipto>
+    <item>
+        <title>Empire Burlesque</title>
+        <note>Special Edition</note>
+        <quantity>1</quantity>
+        <price>10.90</price>
+    </item>
+    <item>
+        <title>Hide your heart</title>
+        <quantity>1</quantity>
+        <price>9.90</price>
+    </item>
+</shiporder>

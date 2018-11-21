@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<shiporder>
+    <orderperson>John Smith</orderperson>
+    
+    <item>
+        <title>Empire Burlesque</title>
+        
+        <quantity>1</quantity>
+        
+    </item>
+    
+</shiporder>

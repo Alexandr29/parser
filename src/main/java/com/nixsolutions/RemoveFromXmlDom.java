@@ -16,7 +16,7 @@ import java.io.*;
 
 public class RemoveFromXmlDom {
 
-    private void saveToXML(Document doc) {
+    private void saveToXML(Document doc,File file2) {
         try {
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer();
@@ -26,7 +26,7 @@ public class RemoveFromXmlDom {
             DOMSource source = new DOMSource(doc);
             transformer.transform(source, result);
             String strTemp = writer.toString();
-            File file2 = new File("src/main/resources/myXML2.xml");
+
             FileWriter fileWriter = new FileWriter(file2);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(strTemp);
@@ -65,7 +65,7 @@ public class RemoveFromXmlDom {
         }
     }
 
-    private void updateXML(File file) {
+    public void updateXML(File file,File file2) {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory
                 .newInstance();
         try {
@@ -73,7 +73,7 @@ public class RemoveFromXmlDom {
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(file);
             deleteEvenNode(doc);
-            saveToXML(doc);
+            saveToXML(doc,file2);
         } catch (ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);
         }
@@ -81,6 +81,7 @@ public class RemoveFromXmlDom {
 
     public static void main(String[] args) {
         File file = new File("src/main/resources/source.xml");
-        new RemoveFromXmlDom().updateXML(file);
+        File file2 = new File("src/main/resources/resultDom.xml");
+        new RemoveFromXmlDom().updateXML(file,file2);
     }
 }
